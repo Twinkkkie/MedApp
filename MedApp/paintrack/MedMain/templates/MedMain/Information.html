@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Responsive Login Form</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css'%}">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900&display=swap"
+          rel="stylesheet"/>
+</head>
+
+<body>
+<div class="section">
+    <div class="wrapper">
+        <div class="container" id="info-con">
+            <div class="title">Заполните информацию</div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="info-user-details">
+                    <div class="input-box">
+                        <span class="details">Рост</span>
+                        {{ form.Height}}
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Вес</span>
+                        {{ form.Weight}}
+                    </div>
+                    <div class="input-box-diseases">
+                        <span class="details">Заболевания</span>
+                        <!--					<textarea id="diseases" name="diseases" placeholder="Введите заболевания"></textarea>-->
+                        {{ form.Diseases}}
+
+                    </div>
+                </div>
+
+                <div class="button">
+                    <a href="{% url 'Congratulations' %}"><input type="submit" value="Войти"></a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+       if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+               // registration worked
+               console.log('Registration succeeded. Scope is ' + reg.scope);
+           }).catch(function(error) {
+               // registration failed
+               console.log('Registration failed with ' + error);
+           });
+       }
+
+</script>
+</body>
+
+</html>

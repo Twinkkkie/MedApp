@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <img src="{% static 'static/img' %}" alt="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900&display=swap"
+          rel="stylesheet"/>
+    <title>Hello page</title>
+</head>
+
+<body>
+{% csrf_token %}
+<div class="section">
+    <div class="__container">
+        <h2 class="heading">Чертков Руслан</h2>
+        <p>Можете приступать к отслеживанию показателей</p>
+
+        <div class="box-container">
+            <div class="box">
+                <img src="{% static 'img/pain_image_1.png' %}" alt="">
+                <h3>Интенсивность боли</h3>
+                <a href="{% url 'PainIntensity'%}" class="btn">Перейти</a>
+            </div>
+
+            <div class="box">
+                <img src="{% static 'img/pain_image_2.png' %}" alt="">
+                <h3>Характер боли</h3>
+                <a href="#" class="btn">Перейти</a>
+            </div>
+
+            <div class="box">
+                <img src="{% static 'img/pain_image_3.png' %}" alt="">
+                <h3>Область боли</h3>
+                <a href="#" class="btn">Перейти</a>
+            </div>
+
+            <div class="box">
+                <img src="{% static 'img/pain_image_4.png' %}" alt="">
+                <h3>Положение тела</h3>
+                <a href="#" class="btn">Перейти</a>
+            </div>
+
+            <div class="box">
+                <img src="{% static 'img/pain_image_5.png' %}" alt="">
+                <h3>Сон</h3>
+                <a href="#" class="btn">Перейти</a>
+            </div>
+
+            <div class="box">
+                <img src="{% static 'img/pain_image_6.png' %}" alt="">
+                <h3>Физ. активность</h3>
+                <a href="#" class="btn">Перейти</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/script.js"></script>
+<script>
+       if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+               // registration worked
+               console.log('Registration succeeded. Scope is ' + reg.scope);
+           }).catch(function(error) {
+               // registration failed
+               console.log('Registration failed with ' + error);
+           });
+       }
+
+</script>
+</body>
+
+</html>

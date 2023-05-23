@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>registration</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    {% load static %}
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900&display=swap"
+          rel="stylesheet"/>
+</head>
+
+<body>
+<div class="section">
+    <div class="wrapper">
+        <div class="container">
+            <div class="title">Регистрация</div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">ФИО</span>
+                        {{ form.FIO }}
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Имя пользователя</span>
+                        {{ form.User_name }}
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Почта</span>
+                        {{form.Email}}
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Номер телефона</span>
+                        {{form.Phone_number}}
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Пароль</span>
+                        {{form.Password}}
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Подтверждение пароля</span>
+                        {{form.Password_confirmation}}
+                    </div>
+                </div>
+                <div class="gender-details">
+                    {{form.Gender}}
+                    {{form.Gender_1}}
+                    <span class="gender-title">Пол</span>
+                    <div class="category" id="gender">
+                        <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="gender">Мужской</span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="gender">Женский</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button">
+                    <input type="submit" value="Зарегистрироваться">
+                </div>
+                <div class="login-details">
+                    <a href="{% url 'Login' %}" class="goLogin">Войти</a>
+                    <span>{{ error }}</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+       if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+               // registration worked
+               console.log('Registration succeeded. Scope is ' + reg.scope);
+           }).catch(function(error) {
+               // registration failed
+               console.log('Registration failed with ' + error);
+           });
+       }
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{% load static %}
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet" type="text/css"/>
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <img src="{% static 'static/img' %}" alt="">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900&display=swap"
+		rel="stylesheet" />
+	<script src="js/script.js"></script>
+	<title>Hello page</title>
+</head>
+
+<body>
+{% csrf_token %}
+	<div class="section">
+		<div class="wrapper">
+			<div class="box_con">
+				<div class="rating">
+					<input type="radio" name="rating" id="rate10"><label for="rate10">
+						<p>10</p>
+					</label>
+					<input type="radio" name="rating" id="rate9"><label for="rate9">
+						<p>9</p>
+					</label>
+					<input type="radio" name="rating" id="rate8"><label for="rate8">
+						<p>8</p>
+					</label>
+					<input type="radio" name="rating" id="rate7"><label for="rate7">
+						<p>7</p>
+					</label>
+					<input type="radio" name="rating" id="rate6"><label for="rate6">
+						<p>6</p>
+					</label>
+					<input type="radio" name="rating" id="rate5"><label for="rate5">
+						<p>5</p>
+					</label>
+					<input type="radio" name="rating" id="rate4"><label for="rate4">
+						<p>4</p>
+					</label>
+					<input type="radio" name="rating" id="rate3"><label for="rate3">
+						<p>3</p>
+					</label>
+					<input type="radio" name="rating" id="rate2"><label for="rate2">
+						<p>2</p>
+					</label>
+					<input type="radio" name="rating" id="rate1"><label for="rate1">
+						<p>1</p>
+					</label>
+				</div>
+				<div class="emoji">
+					<img src="{% static 'img/1.png' %}" id="smile" alt="smile">
+					<img src="{% static 'img/2.png' %}" alt="norm">
+					<img src="{% static 'img/3.png' %}" alt="bad">
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+	</script>
+
+</body>
+
+
+</html>

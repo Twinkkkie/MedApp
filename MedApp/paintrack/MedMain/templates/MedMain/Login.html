@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>login</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/style.css'%}">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900&display=swap"
+          rel="stylesheet"/>
+</head>
+
+<body>
+<div class="section">
+    <div class="wrapper">
+        <div class="container" id="login-con">
+            <div class="title">Авторизация</div>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="login-user-details">
+                    <div class="input-box">
+                        <span class="details">Имя пользователя</span>
+                        {{ form.Name_Auto }}
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Пароль</span>
+                        {{ form.Password_Auto }}
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Подтверждение пароля</span>
+                        {{ form.Password_confirmation_Auto }}
+                    </div>
+                </div>
+
+                <div class="button">
+                    <a href="{% url 'Main' %}"><input type="submit" value="Войти"></a>
+                </div>
+                {{ error }}
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+       if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+               // registration worked
+               console.log('Registration succeeded. Scope is ' + reg.scope);
+           }).catch(function(error) {
+               // registration failed
+               console.log('Registration failed with ' + error);
+           });
+       }
+
+</script>
+</body>
+
+</html>

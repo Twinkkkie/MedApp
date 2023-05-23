@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Responsive Congratulations Form</title>
+    <meta name="viewport" content="width=device-width,
+      initial-scale=1.0"/>
+    {% load static %}
+    <link href="{% static 'CSS/style.css' %}" rel="stylesheet" type="text/css"/>
+    <img src="{% static 'static/img' %}" alt="">
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900&display=swap"
+          rel="stylesheet"/>
+</head>
+
+<body>
+<div class="section">
+    <div class="wrapper">
+        <div class="_container">
+            <div class="text-img">
+                <img src="{% static 'img/3rd_image.png' %}"alt="3rd_image">
+            </div>
+            <div class="congrat-text">
+                <h3>Поздравляем!</h3>
+                <p>Вы успешно зарегистрировались в нашем приложении.</p>
+            </div>
+            <div class="congrat-btn">
+                <a href="{% url 'Main' %}" id="btn_1">Далее</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+       if ('serviceWorker' in navigator) {
+           navigator.serviceWorker.register('{% url "sw.js" %}', { scope: '/' }).then(function(reg) {
+               // registration worked
+               console.log('Registration succeeded. Scope is ' + reg.scope);
+           }).catch(function(error) {
+               // registration failed
+               console.log('Registration failed with ' + error);
+           });
+       }
+
+</script>
+</body>
+
+</html>
